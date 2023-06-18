@@ -1,0 +1,29 @@
+noise_type: "uniform" # type of background noise for all neurons
+I: 0.1  # constant background input
+J1: 0.75  # maximum excitatory connection between neurons
+J0: -0.15  # maximum inhibitory connection between neurons
+Iloc: 0.05  # amplitude of a place-specific input
+
+# Parameters for simulation time/velocity
+tau: 0.01
+T: 20.  # total time in seconds
+
+#num_neurons: 32
+env_length: 200
+init_value: 0.01
+disc_step: 1.0
+mean_field_activity_remove_background: True
+
+## Grid specific parameters
+# number of total modules
+num_modules: 4
+# number of neurons per module
+num_neurons_per_module: 8
+# scale of the modules
+module_scale: 1.5
+# the scale of the smallest module
+module_scale_min: 1
+
+## Evaluation parameters
+# Errors above this threshold (m) is counted as a catastrophic error - 5% of environment size in Eliav et al. 2022
+cat_error_threshold: 10

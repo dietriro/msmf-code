@@ -1,0 +1,173 @@
+experiment_single:
+  # Experiment Configuration
+  description: "Single experiment"
+  num_eval_iters: 5
+  # Network Configuration
+  network_params:
+    num_neurons: 50
+    env_length: 200
+#    init_value: 0.01
+    # All zeros
+#    I: 0.0
+#    J0: 0.0
+#    J1: 0.0
+#    I: 0.1
+#    J0: -0.15
+#    J1: 0.7
+#    I: 0
+#    J0: -0.3
+#    J1: 0.35
+    interaction_length: 0.01
+    interaction_length_factor: 3
+#    I: 0.0
+#    J0: -0.1
+#    J1: 0.85
+#    Iloc: 0.0
+#    interaction_length: 0.02
+#    prob_dead_neurons: 0.0
+    pos_input_suppression_start: 240.0
+    pos_input_suppression_end: 260.0
+#    interaction_length: 0.00125
+    expected_mean_field_activity: 0.015
+#    mean_field_activity_remove_background: True
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean]
+    pos_error_max: [ mean]
+    mean_field_activity: [ mean, min, max, std, median ]
+    perc_correct_fields: [ mean, min, max, std, median ]
+    avg_num_fields_per_neuron: [ mean, std]
+    avg_num_fields_active_per_neuron: [ mean, std ]
+    avg_accum_field_coverage_per_neuron: [ mean, std ]
+    num_fields_total: [ mean, std]
+    num_fields_active: [ mean, std]
+    activity_false_positives_num: [ mean, min, max, std, median ]
+    activity_false_negatives_num: [ mean, min, max, std, median ]
+    perc_unique_field_combinations: [ mean, min, max, std, median ]
+    weighted_avg_activity: [ mean, std, median ]
+  plots:
+    neuron_activity_static: True
+experiment_a:
+  # Experiment Configuration
+  description: "Total number of neurons"
+  num_eval_iters: 10
+  # Parameter Configuration
+  param_name: num_neurons
+  param_eval_range_min: 50
+  param_eval_range_max: 1050
+  param_eval_range_step: 50
+  # Network Configuration
+  network_params:
+    num_neurons: 50
+    env_length: 200
+    init_value: 0.01
+    prob_dead_neurons: 0.0
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: True
+experiment_c:
+  # Experiment Configuration
+  description: "Test"
+  num_eval_iters: 5
+  # Parameter Configuration
+  param_name: num_neurons
+  param_eval_range_min: 50
+  param_eval_range_max: 150
+  param_eval_range_step: 50
+  # Network Configuration
+  network_params:
+    num_neurons: 50
+    env_length: 200
+    init_value: 0.01
+    prob_dead_neurons: 0.0
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std ]
+    pos_error_std: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: True
+experiment_2-4-a:
+  # Experiment Configuration
+  description: "Lesions of random neurons w/o lateral connections"
+  num_eval_iters: 20
+  # Parameter Configuration
+  param_name: prob_dead_neurons
+  param_eval_range_min: 0.0
+  param_eval_range_max: 1.0
+  param_eval_range_step: 0.05
+  network_params:
+    env_length: 200
+    num_neurons: 50
+    init_value: 0.01
+    I: 0.0  # constant background input
+    J1: 0.0  # maximum excitatory connection between neurons
+    J0: 0.0  # maximum inhibitory connection between neurons
+    Iloc: 0.05  # amplitude of a place-specific input
+    disc_step: 0.5
+    expected_mean_field_activity: 0.015
+    mean_field_activity_remove_background: True
+#    replace_neuron_attractor: False
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: False
+experiment_ga:
+  # Experiment Configuration
+  description: "Optimization with a continuous genetic algorithm"
+  num_eval_iters: 20
+  # Network Configuration
+  network_params:
+    num_neurons: 50
+    env_length: 200
+    init_value: 0.01
+    prob_dead_neurons: 0.0
+#    I: 0.1
+#    J0: -0.15
+#    J1: 0.7
+    # I: 0
+    # J0: 0
+    # J1: 0
+    # Iloc: 0.05
+    f: 0.4
+    nmin: 11
+    nmed: 10
+    nmax: 9
+#    expected_mean_field_activity: 0.001
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: False

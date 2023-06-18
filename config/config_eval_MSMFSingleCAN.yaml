@@ -1,0 +1,378 @@
+experiment_single:
+  # Experiment Configuration
+  description: "eval_3-3-b_01"
+  label: "V-Org-2$_{}^{+/}$"
+  num_eval_iters: 20
+#  decoding_threshold: 0.0
+  network_params:
+    num_neurons: 50
+#    env_length: 1000
+#    T: 100
+#    init_value: 0.01
+    field_ratio_threshold: 0.5
+#    field_connection_prob: 0.99
+# Uncertainty
+#    prob_dead_neurons: 0.0
+#    pos_input_suppression_start: 40.0
+#    pos_input_suppression_end: 60.0
+#    I: 0.0
+#    J0: -0.04
+#    J1: 0.62
+# All zeros
+#    I: 0.0
+#    J0: 0.0
+#    J1: 0.0
+#    Best from opt-10
+#    J0: -0.04
+#    J1: 0.08
+#    field_ratio_threshold: 0.83
+#    Iloc: 0.05
+    disc_step: 0.5
+#    field_size_distribution: normal
+#    fs_normal_mean: 9.9
+#    fs_normal_std: 0.1
+    # Optimal values from opt-06
+#    alpha: 15.92
+#    theta: 0.02
+#    max_field_sizes: 36
+    # Large field size variation
+#    alpha: 1.5
+#    theta: 5.0
+#    max_field_sizes: 36
+# Best with lateral connections, no noise (opt-11)
+#    field_ratio_threshold: 0.95
+#    alpha: 2.7
+#    theta: 0.72
+#    max_field_sizes: 40
+#    J1: 0.58
+#    J0: -0.04
+# Best with lateral connections, no noise (opt-11), low max error, frt < 0.8
+#    alpha: 5.4
+#    theta: 1.74
+#    max_field_sizes: 51
+#    J1: 0.26
+#    J0: -0.04
+#    field_ratio_threshold: 0.79
+# Best Org with lateral connections, no noise (opt-10)
+#    field_ratio_threshold: 0.83
+    J1: 0.08
+    J0: -0.04
+# Large deviation between min/max mean error
+#    alpha: 3.66
+#    theta: 0.72
+#    max_field_sizes: 57
+#    alpha: 5.08
+#    theta: 0.44
+#    max_field_sizes: 75
+#        gen_fields_at_bin_locs: False
+#    allow_field_overlap: False
+#    pos_input_suppression_start: 120.0
+#    pos_input_suppression_end: 160.0
+    mean_field_activity_remove_background: True
+    expected_mean_field_activity: 0.015
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean]
+    pos_error_max: [ mean]
+    mean_field_activity: [ mean, min, max, std, median ]
+    perc_correct_fields: [ mean, min, max, std, median ]
+    ignored_field_connections_ratio: [mean, std, median]
+    avg_num_fields_per_neuron: [ mean, std]
+    avg_num_fields_active_per_neuron: [ mean, std ]
+    avg_accum_field_coverage_per_neuron: [ mean, std ]
+    num_fields_total: [ mean, std]
+    num_fields_active: [ mean, std]
+    activity_false_positives_num: [ mean, min, max, std, median ]
+    activity_false_negatives_num: [ mean, min, max, std, median ]
+    perc_unique_field_combinations: [ mean, min, max, std, median ]
+    weighted_avg_activity: [ mean, std, median ]
+  plots:
+    neuron_activity_static: False
+experiment_a:
+  # Experiment Configuration
+  description: "Minimum ratio of field sizes for connections"
+  num_eval_iters: 16
+  # Parameter Configuration
+  param_name: field_ratio_threshold
+  param_eval_range_min: 0.75
+  param_eval_range_max: 1.0
+  param_eval_range_step: 0.01
+  network_params:
+    num_neurons: 50
+    env_length: 200
+    init_value: 0.01
+    I: 0.0
+    J0: -0.04
+    J1: 0.62
+    alpha: 4.36
+    theta: 0.5
+    max_field_sizes: 49
+    disc_step: 0.5
+    mean_field_activity_remove_background: True
+    expected_mean_field_activity: 0.015
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: True
+experiment_b:
+  # Experiment Configuration
+  description: "Probability of pruning field connections randomly + dead neurons"
+  num_eval_iters: 3
+  # Parameter Configuration
+  param_name: field_connection_prob
+  param_eval_range_min: 0.0
+  param_eval_range_max: 1.05
+  param_eval_range_step: 0.05
+  network_params:
+#    field_ratio_threshold: 0.9
+    num_neurons: 100
+    env_length: 200
+    init_value: 0.01
+    prob_dead_neurons: 0.2
+#    pos_input_suppression_start: 40.0
+#    pos_input_suppression_end: 60.0
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: False
+experiment_2-1-d:
+  # Experiment Configuration
+  description: "Maximum coverage per neuron (m)"
+  label: "V-Org-1$_{}^{-}$"
+  num_eval_iters: 20
+  # Parameter Configuration
+  param_name: max_field_sizes
+  param_eval_range_min: 1
+  param_eval_range_max: 101
+  param_eval_range_step: 1
+  network_params:
+#    field_ratio_threshold: 0.9
+    num_neurons: 50
+    env_length: 200
+    init_value: 0.01
+#    prob_dead_neurons: 0.0
+#    T: 5.0
+#    field_connection_prob: 0.7
+    I: 0.0
+    J0: 0.0
+    J1: 0.0
+#    Iloc: 0.05
+    # Optimal values from opt-06
+#    alpha: 15.92
+#    theta: 0.02
+#    max_field_sizes: 36
+    disc_step: 0.5
+    expected_mean_field_activity: 0.015
+    mean_field_activity_remove_background: True
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean]
+    pos_error_max: [ mean]
+    mean_field_activity: [ mean, min, max, std, median ]
+    perc_correct_fields: [ mean, min, max, std, median ]
+    ignored_field_connections_ratio: [mean, std, median]
+    avg_num_fields_per_neuron: [ mean, std]
+    avg_num_fields_active_per_neuron: [ mean, std ]
+    avg_accum_field_coverage_per_neuron: [ mean, std ]
+    num_fields_total: [ mean, std]
+    num_fields_active: [ mean, std]
+    activity_false_positives_num: [ mean, min, max, std, median ]
+    activity_false_negatives_num: [ mean, min, max, std, median ]
+    perc_unique_field_combinations: [ mean, min, max, std, median ]
+    weighted_avg_activity: [ mean, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: True
+experiment_d:
+  # Experiment Configuration
+  description: "Std deviation of position input (gaussian)"
+  num_eval_iters: 10
+  # Parameter Configuration
+  param_name: gaussion_pos
+  param_eval_range_min: 0.0
+  param_eval_range_max: 1.0
+  param_eval_range_step: 0.1
+  network_params:
+    field_ratio_threshold: 0.9
+    num_neurons: 50
+    env_length: 200
+    init_value: 0.01
+    prob_dead_neurons: 0.0
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: False
+experiment_2-4-a:
+  # Experiment Configuration
+  description: "Lesions of random neurons w/o lateral connections"
+  num_eval_iters: 20
+  # Parameter Configuration
+  param_name: prob_dead_neurons
+  param_eval_range_min: 0.0
+  param_eval_range_max: 1.0
+  param_eval_range_step: 0.05
+  network_params:
+    env_length: 200
+    num_neurons: 50
+#    field_ratio_threshold: 0.9
+    init_value: 0.01
+#    prob_dead_neurons: 0.0
+    alpha: 15.92
+    theta: 0.02
+    max_field_sizes: 36
+#    I: 0.1  # constant background input
+#    J1: 0.7  # maximum excitatory connection between neurons
+#    J0: -0.15  # maximum inhibitory connection between neurons
+    I: 0.0  # constant background input
+    J1: 0.0  # maximum excitatory connection between neurons
+    J0: 0.0  # maximum inhibitory connection between neurons
+    Iloc: 0.05  # amplitude of a place-specific input
+    s: 400
+    max_num_tries: 1000
+    disc_step: 0.5
+    expected_mean_field_activity: 0.015
+    mean_field_activity_remove_background: True
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+    weighted_avg_activity: [ mean, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: False
+experiment_3-3-c:
+  # Experiment Configuration
+  description: "Field ratio threshold variation"
+  label: "V-Org-1$_{}^{+o}$"
+  num_eval_iters: 20
+  # Parameter Configuration
+  param_name: field_ratio_threshold
+  param_eval_range_min: 0.0
+  param_eval_range_max: 1.0
+  param_eval_range_step: 0.05
+  network_params:
+#    field_ratio_threshold: 0.9
+    num_neurons: 50
+    env_length: 200
+#    init_value: 0.01
+#    prob_dead_neurons: 0.0
+#    T: 5.0
+#    field_connection_prob: 0.7
+    I: 0.0
+#    J0: 0.0
+#    J1: 0.0
+    J1: 0.08
+    J0: -0.04
+#    Iloc: 0.05
+    # Optimal values from opt-06
+#    alpha: 15.92
+#    theta: 0.02
+#    max_field_sizes: 36
+    disc_step: 0.5
+    expected_mean_field_activity: 0.015
+    mean_field_activity_remove_background: True
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean]
+    pos_error_max: [ mean]
+    mean_field_activity: [ mean, min, max, std, median ]
+    perc_correct_fields: [ mean, min, max, std, median ]
+    ignored_field_connections_ratio: [mean, std, median]
+    avg_num_fields_per_neuron: [ mean, std]
+    avg_num_fields_active_per_neuron: [ mean, std ]
+    avg_accum_field_coverage_per_neuron: [ mean, std ]
+    num_fields_total: [ mean, std]
+    num_fields_active: [ mean, std]
+    activity_false_positives_num: [ mean, min, max, std, median ]
+    activity_false_negatives_num: [ mean, min, max, std, median ]
+    perc_unique_field_combinations: [ mean, min, max, std, median ]
+    weighted_avg_activity: [ mean, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: True
+experiment_ga:
+  # Experiment Configuration
+  description: "Optimization with a continuous genetic algorithm"
+  num_eval_iters: 20
+  # Network Configuration
+  network_params:
+    num_neurons: 50
+    env_length: 200
+#    T: 20
+#    init_value: 0.01
+#    field_ratio_threshold: 0.8
+# Uncertainty
+#    prob_dead_neurons: 0.0
+#    pos_input_suppression_start: 40.0
+#    pos_input_suppression_end: 60.0
+#    I: 0.1
+#    J0: -0.05
+#    J1: 0.75
+# All zeros
+    I: 0.0
+    J0: 0.0
+    J1: 0.0
+#    Iloc: 0.05
+    disc_step: 0.5
+#    field_size_distribution: normal
+#    fs_normal_mean: 0.3
+#    fs_normal_std: 0.3
+#    alpha: 14.76
+#    theta: 0.02
+#    max_field_sizes: 31
+#    gen_fields_at_bin_locs: False
+#    allow_field_overlap: False
+    mean_field_activity_remove_background: True
+    expected_mean_field_activity: 0.015
+  # Evaluation Configuration
+  global_metrics:
+    pos_error_mean: [ mean, min, max, std, median ]
+    pos_error_std: [ mean, min, max, std, median ]
+    pos_error_min: [ mean, min, max, std ]
+    pos_error_max: [ mean, min, max, std ]
+    mean_field_activity: [mean]
+    perc_correct_fields: [mean]
+    avg_num_fields_per_neuron: [ mean, min, max, std, median ]
+    num_fields_total: [ mean, min, max, std, median ]
+  plots:
+    pos_error_mean: True
+    pos_error_std: False

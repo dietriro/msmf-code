@@ -1,0 +1,51 @@
+configuration:
+  population_size: 20
+  selection_rate: 0.2
+  mutation_prob: 0.25
+  mutate_best: False
+  reevaluation: False
+  crossover_enabled: True
+#  Possible schemes are: rank-weighting, fitness-weighting, e-greedy
+  parent_selection_scheme: 'fitness-weighting'
+  parent_selection_parameter: None
+#  fitness_fun: '1 / (pos_error_mean + 1)'   # Only mean error
+  fitness_fun: 'np.exp(-pos_error_mean*5/pos_error_max)'
+#                 / 2  +  np.exp(-5*(1-perc_correct_fields)) / 2'     # Mean error + perc. correct fields
+
+parameters:
+  num_modules:
+    is_enabled: True
+    min: 2
+    max: 10
+    step: 1
+  num_neurons_per_module:
+    is_enabled: True
+    min: 2
+    max: 20
+    step: 1
+  module_scale:
+    is_enabled: True
+    min: 1.0
+    max: 4.0
+    step: 0.2
+    round_decimal: 5
+  module_scale_min:
+    is_enabled: True
+    min: 0.5
+    max: 3.0
+    step: 0.25
+    round_decimal: 5
+# maximum excitatory connection weight between neurons
+  J1:
+    is_enabled: False
+    min: 0.25
+    max: 1.25
+    step: 0.05
+    round_decimal: 5
+  # maximum inhibitory connection weight between neurons
+  J0:
+    is_enabled: False
+    min: -0.3
+    max: -0.02
+    step: 0.02
+    round_decimal: 5

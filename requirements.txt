@@ -1,0 +1,9 @@
+colorlog
+jupyter
+matplotlib
+numpy
+pandas
+plotly
+PyYAML
+scipy
+setuptools

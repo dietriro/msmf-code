@@ -1,0 +1,21 @@
+experiment_id,experiment_num,network_type,time_finished,I,Iloc,J0,J1,T,dead_neuron_ids,disc_step,dt,env_length,expected_mean_field_activity,init_value,mean_field_activity_remove_background,module_scale,module_scale_min,num_modules,num_neurons,num_neurons_per_module,prob_dead_neurons,random_seed,random_seed_type,tau,vel,description,evaluated_parameter,evaluated_range,num_eval_iters,run_time
+2-4-a,01,MSMFGridCAN,02.11.22 - 14:12,0.0,0.05,0.0,0.0,20.0,"[20  2 18 13  3  4 23  0  8 19 12 10 21  1 15  5 26 22 11  9  6 24 14 17
+ 25]",0.5,0.05,200,0.015,0.01,True,1.6,0.5,3,27,9,0.95,1667394749746375517,time,0.01,20.0,Lesions of random neurons w/o lateral connections,prob_dead_neurons,"(0.0, 1.0, 0.05)",20,84
+2-4-a,02,MSMFGridCAN,02.11.22 - 14:58,0.0,0.05,0.0,0.0,20.0,"[151  12 127  80 148 109 126  84  19 118  82 136  85 137  42  65  45  28
+  98 166 111 167  83  20   6  97  25  47 128 114 162  69 135  10  86  29
+  53  18   1  62  79 133  93  43  63   2  70  15 139   5  44  59 145  58
+  96  21  55  33 146 132  90 122  31  22  56 101  32  66 113   3 140 164
+  99  35   7 155 107  24  95 121 124  46 142  40  11 123  57  67 158  74
+   0  88 147 119  78  13  51 152 159 120 106  68  26  92 115 104  48  89
+ 129   8 108 168 157 103   9  16  52 141  39 169   4  49  75  94  41  50
+ 163  91  14  37  60 112 125 165 131  27 110  30 161  77  54  72  64 149
+ 143  87 100  38 130 138  71  17 105  81 134 170 150  76 102 117  36 153]",0.5,0.05,200,0.015,0.01,True,3.0,0.5,9,171,19,0.95,1667397472192027900,time,0.01,20.0,Lesions of random neurons w/o lateral connections,prob_dead_neurons,"(0.0, 1.0, 0.05)",20,1400
+2-4-a,03,MSMFGridCAN,02.11.22 - 15:09,0.0,0.05,0.0,0.0,20.0,"[62 17 41 30  1 26 18 13 53 48 45 10 15 40 16  9 47 44  0 60 50 11 57 36
+ 43 23 59 20 46 61 52 25 31 33  3 27  7 14  4  2 38 24 56 37  5 21 34 29
+ 19 39 54  8  6 51 58 28 55 22 42]",0.5,0.05,200,0.015,0.01,True,3.0,0.5,9,63,7,0.95,1667398138385461220,time,0.01,20.0,Lesions of random neurons w/o lateral connections,prob_dead_neurons,"(0.0, 1.0, 0.05)",20,107
+2-4-a,04,MSMFGridCAN,02.11.22 - 15:13,0.0,0.05,0.0,0.0,20.0,"[20 44 46 11 27 56  9  3 23 18 13 19 36 47 34 48 16 25 24 22  0 43 38 54
+ 41 17 35 55 12 37 31 50  7 29 45 42 15  1 53 49 30  5  2 32 51 52 40  8
+ 21 14 33  6 28  4]",0.5,0.05,200,0.015,0.01,True,1.2,0.5,3,57,19,0.95,1667398428565090277,time,0.01,20.0,Lesions of random neurons w/o lateral connections,prob_dead_neurons,"(0.0, 1.0, 0.05)",20,92
+2-4-a,05,MSMFGridCAN,02.11.22 - 15:15,0.0,0.05,0.0,0.0,20.0,"[16 10  0 21 47 19  7 15 45  1 22 39 52 40 36 44 35 48 50 14 37 23 33 25
+  4 30 53 13 17 26 12  9 28 55 24 43 41 42 18 32  2 56 49 51 11 54 46 27
+ 29  3 20  5 34  8]",0.5,0.05,200,0.015,0.01,True,1.8,0.5,3,57,19,0.95,1667398523159323999,time,0.01,20.0,Lesions of random neurons w/o lateral connections,prob_dead_neurons,"(0.0, 1.0, 0.05)",20,88
