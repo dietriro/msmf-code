@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from msmfcode.core.config import *
 from msmfcode.evaluation.plot import plot_error
 from msmfcode.evaluation.data import load_experimental_data, load_experimental_config
-from msmfcode.models.cann import MSMFSingleCAN, MSMFMultiCAN, MSMFGridCAN
+from msmfcode.models.cann import DMSMF, FMSMF, Grid
 
 ERROR_LABELS = {Metric.POS_ERROR_MEAN: 'Mean positional error (m)',
                 Metric.POS_ERROR_STD: 'Std. deviation of positional error (m)',
@@ -12,9 +12,9 @@ ERROR_LABELS = {Metric.POS_ERROR_MEAN: 'Mean positional error (m)',
                 Metric.AVG_NUM_FIELDS_PER_NEURON: 'Avg. number of fields (per neuron)'}
 
 # Config
-# network_type = MSMFSingleCAN
-# network_type = MSMFMultiCAN
-network_type = MSMFGridCAN
+# network_type = DMSMF
+# network_type = FMSMF
+network_type = Grid
 # plt.rcParams['figure.dpi'] = 300
 PLOT_FILE_TYPE = 'pdf'
 experiment_id = '2-4-a'

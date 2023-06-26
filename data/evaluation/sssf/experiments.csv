@@ -1,3 +1,3 @@
 experiment_id,experiment_num,network_type,time_finished,I,Iloc,J0,J1,T,dead_neuron_ids,disc_step,dt,env_length,expected_mean_field_activity,f,field_loc_offset,init_value,interaction_length,mean_field_activity_remove_background,nf,nmax,nmed,nmin,num_neurons,prob_dead_neurons,random_seed,replace_neuron_attractor,set_field_loc_offset_dyn,tau,vel,description,evaluated_parameter,evaluated_range,num_eval_iters,run_time
-2-4-a,01,SSSFCAN,11.10.22 - 15:33,0.0,0.05,0.0,0.0,20.0,"[45  6 19 40 41  2 14 30  0  1  5 46 35 43 27 36 29 31 23 10 38 42 34 39
+2-4-a,01,SSSF,11.10.22 - 15:33,0.0,0.05,0.0,0.0,20.0,"[45  6 19 40 41  2 14 30  0  1  5 46 35 43 27 36 29 31 23 10 38 42 34 39
  28 18 15 32 16  7 49 24 20 12 11 17 44 22  8  4 47  9  3 21 13 25 26]",0.5,0.05,200,0.015,1.0,"[0, 0, 20.0]",0.01,0.05,True,1,1,0,0,50,0.95,time,False,True,0.01,20.0,Lesions of random neurons w/o lateral connections,prob_dead_neurons,"(0.0, 1.0, 0.05)",20,53

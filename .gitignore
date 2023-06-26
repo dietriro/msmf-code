@@ -6,6 +6,7 @@ test*.py
 msmf_single_cann.py
 bkp/
 *.pkl
+msmf.log
 
 #data/
 *.png

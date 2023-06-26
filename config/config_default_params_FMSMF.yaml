@@ -8,7 +8,7 @@ Iloc: 0.05  # amplitude of a place-specific input
 tau: 0.01
 T: 20.  # total time in seconds
 
-# MSMFMultiCAN specific params
+# FMSMF specific params
 nmax: 1
 nmed: 2
 nmin: 5

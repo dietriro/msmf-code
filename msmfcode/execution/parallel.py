@@ -10,7 +10,7 @@ from msmfcode.evaluation.decoding import pop_decoding
 from msmfcode.evaluation.plot import plot_error, plot_neuron_activity_static
 from msmfcode.evaluation.data import load_configuration, EvaluationData, get_last_experiment_num, \
     save_experimental_setup, save_model_object
-from msmfcode.models.cann import MSMFSingleCAN, DiffSolverError
+from msmfcode.models.cann import DMSMF, DiffSolverError
 
 
 class Process(mp.Process):
@@ -310,7 +310,7 @@ class ParallelEvaluationExecutor(Executor):
         # Add evaluation range to eval_params
         eval_params[self.config[PARAM_NAME]] = self.param_eval_range
         # Add manually calculated metrics to eval_params
-        if self.can_type is MSMFSingleCAN and (self.cans[0].p.field_ratio_threshold is not None or
+        if self.can_type is DMSMF and (self.cans[0].p.field_ratio_threshold is not None or
                                                self.cans[0].p.field_connection_prob is not None) and \
                 'num_field_con_pruned' in self.eval_data.eval_metrics.keys() and \
                 'num_field_con_total' in self.eval_data.eval_metrics.keys():

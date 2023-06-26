@@ -152,7 +152,7 @@ class Parameters:
             for name, value in params.items():
                 setattr(self, name, value)
 
-        if type(can) is MSMFGridCAN:
+        if type(can) is Grid:
             self.num_neurons = int(self.num_modules * self.num_neurons_per_module)
 
     def load_default_params(self, can):
@@ -469,7 +469,7 @@ class ContinuousAttractorNetwork(ABC):
         return type(self).__name__
 
 
-class MSMFMultiCAN(ContinuousAttractorNetwork):
+class FMSMF(ContinuousAttractorNetwork):
     def __init__(self, index=None, random_seed=None, collected_metrics=None, add_params=None):
         super().__init__(index=index, random_seed=random_seed, collected_metrics=collected_metrics,
                          add_params=add_params)
@@ -658,7 +658,7 @@ class MSMFMultiCAN(ContinuousAttractorNetwork):
         self.field_mask = self.field_sizes > 0
 
 
-class SSSFCAN(MSMFMultiCAN):
+class SSSF(FMSMF):
     def __init__(self, index=None, random_seed=None, collected_metrics=None, add_params=None):
         super().__init__(index=index, random_seed=random_seed, collected_metrics=collected_metrics,
                          add_params=add_params)
@@ -739,7 +739,7 @@ class VariableCAN(ContinuousAttractorNetwork, ABC):
             ax.clear()
 
 
-class MSMFSingleCAN(VariableCAN):
+class DMSMF(VariableCAN):
     def __init__(self, index=None, random_seed=None, collected_metrics=None, add_params=None):
         super().__init__(index=index, random_seed=random_seed, collected_metrics=collected_metrics,
                          add_params=add_params)
@@ -918,7 +918,7 @@ class MSMFSingleCAN(VariableCAN):
         np.fill_diagonal(self.W, 0)  # zero diagonal
 
 
-class MSMFGridCAN(VariableCAN):
+class Grid(VariableCAN):
     def __init__(self, index=None, random_seed=None, collected_metrics=None, add_params=None):
         super().__init__(index=index, random_seed=random_seed, collected_metrics=collected_metrics,
                          add_params=add_params)

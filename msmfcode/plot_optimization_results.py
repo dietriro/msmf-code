@@ -1,6 +1,6 @@
 from msmfcode.core.config import *
 from msmfcode.evaluation.plot import plot_optimization_results_3d, plot_optimization_results_3d_sequential
-from msmfcode.models.cann import MSMFSingleCAN, MSMFMultiCAN
+from msmfcode.models.cann import DMSMF, FMSMF
 
 import plotly.io as pio
 pio.renderers.default = 'browser'
@@ -8,7 +8,7 @@ pio.renderers.default = 'browser'
 
 # Config
 plot_sequentially = False
-net = MSMFMultiCAN
+net = FMSMF
 experiment_nums = [15]
 
 param_ranges = dict()

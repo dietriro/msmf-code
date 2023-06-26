@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from msmfcode.core.logging import log
-from msmfcode.models.cann import ContinuousAttractorNetwork, MSMFMultiCAN, VariableCAN
+from msmfcode.models.cann import ContinuousAttractorNetwork, FMSMF, VariableCAN
 
 ROW = 0
 COL = 1

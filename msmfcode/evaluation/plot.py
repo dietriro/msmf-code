@@ -11,7 +11,7 @@ import plotly.offline as offline
 from msmfcode.core.config import *
 from msmfcode.core.logging import log
 from msmfcode.evaluation.data import load_experimental_config, load_experimental_data, convert_experimental_config
-from msmfcode.models.cann import MSMFSingleCAN, MSMFMultiCAN, ContinuousAttractorNetwork, VariableCAN
+from msmfcode.models.cann import DMSMF, FMSMF, ContinuousAttractorNetwork, VariableCAN
 
 plot_names = set()
 
@@ -293,7 +293,7 @@ def plot_weight_distribution(weights: np.ndarray):
     plt.show()
 
 
-def plot_neuron_activity_fixed_attractors(net: MSMFMultiCAN, neuron_range=None, pause_time=3.0):
+def plot_neuron_activity_fixed_attractors(net: FMSMF, neuron_range=None, pause_time=3.0):
     # Plot single neuron activity profile
 
     if neuron_range is None:
@@ -329,7 +329,7 @@ def plot_neuron_activity_fixed_attractors(net: MSMFMultiCAN, neuron_range=None, 
         axis[1].clear()
 
 
-def plot_neuron_activity_variable_attractors(net: MSMFSingleCAN, neuron_range=None, pause_time=3.0):
+def plot_neuron_activity_variable_attractors(net: DMSMF, neuron_range=None, pause_time=3.0):
     # Plot single neuron activity profile
 
     if neuron_range is None:
@@ -720,7 +720,7 @@ def plot_optimization_results_3d_sequential(data_plot, custom_data, plot_params,
     return fig
 
 
-def plot_field_size_distribution(net: MSMFSingleCAN):
+def plot_field_size_distribution(net: DMSMF):
     a = net.field_sizes.flatten()
     a = a[~(a == 0)]
     plt.hist(a)

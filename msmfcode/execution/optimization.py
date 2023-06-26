@@ -11,12 +11,12 @@ from msmfcode.core.logging import log
 from msmfcode.core.io import load_yaml
 from msmfcode.execution.parallel import ParallelExecutor
 from msmfcode.evaluation.data import save_optimization_setup, save_optimization_state
-from msmfcode.models.cann import MSMFGridCAN, MSMFMultiCAN, MSMFSingleCAN, DiffSolverError, EmptyFields
+from msmfcode.models.cann import Grid, FMSMF, DMSMF, DiffSolverError, EmptyFields
 
 
 class Entity:
     def __init__(self, params, fitness_fun, index=None, executor_class: ParallelExecutor = None,
-                 can_class: Union[MSMFGridCAN, MSMFMultiCAN, MSMFSingleCAN] = None):
+                 can_class: Union[Grid, FMSMF, DMSMF] = None):
         self.executor = None
         self.params = copy(params)
         self.id = index
@@ -28,7 +28,7 @@ class Entity:
             self.initialize_executor(executor_class, can_class)
 
     def initialize_executor(self, executor_class: ParallelExecutor,
-                            can_class: Union[MSMFGridCAN, MSMFMultiCAN, MSMFSingleCAN]):
+                            can_class: Union[Grid, FMSMF, DMSMF]):
         self.executor = executor_class('ga', can_class, parameters=self.params)
 
     def evaluate(self):
@@ -94,7 +94,7 @@ class EvaluatedEntity(Entity):
 
 class ContGeneticAlgorithm:
     def __init__(self, executor_class: type(ParallelExecutor),
-                 can_class: type(Union[MSMFGridCAN, MSMFMultiCAN, MSMFSingleCAN])):
+                 can_class: type(Union[Grid, FMSMF, DMSMF])):
         self.finished_gen = None
         self.best_fitness = None
         self.data_save_entity = None

@@ -3,7 +3,7 @@ import numpy as np
 from msmfcode.core.logging import log
 from msmfcode.core.config import *
 from msmfcode.execution.optimization import ContGeneticAlgorithm
-from msmfcode.models.cann import MSMFGridCAN, MSMFMultiCAN, MSMFSingleCAN
+from msmfcode.models.cann import Grid, FMSMF, DMSMF
 from msmfcode.execution.parallel import ParallelExecutor
 from msmfcode.evaluation.plot import plot_fitness
 from msmfcode.evaluation.data import load_optimization_state
@@ -18,7 +18,7 @@ PLOT = 2
 log.handlers[LogHandler.STREAM].setLevel(logging.ESSENS)
 log.handlers[LogHandler.FILE].setLevel(logging.DEBUG)
 task = CONT_OPTIMIZE
-net_type = MSMFMultiCAN
+net_type = FMSMF
 
 
 def optimize():
@@ -40,10 +40,10 @@ def continue_optimization():
 
 
 def plot_fitness_cga():
-    plot_fitness(MSMFSingleCAN, 1, data_fun=np.max)
-    plot_fitness(MSMFSingleCAN, 1, data_fun=np.mean)
-    # plot_fitness(MSMFSingleCAN, 9, data_fun=np.mean)
-    # plot_fitness(MSMFSingleCAN, 10, data_fun=np.mean)
+    plot_fitness(DMSMF, 1, data_fun=np.max)
+    plot_fitness(DMSMF, 1, data_fun=np.mean)
+    # plot_fitness(DMSMF, 9, data_fun=np.mean)
+    # plot_fitness(DMSMF, 10, data_fun=np.mean)
 
 
 

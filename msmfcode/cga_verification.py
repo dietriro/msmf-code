@@ -4,7 +4,7 @@ from copy import copy
 
 from msmfcode.core.logging import log
 from msmfcode.core.config import *
-from msmfcode.models.cann import MSMFGridCAN, MSMFMultiCAN, MSMFSingleCAN, DiffSolverError, EmptyFields
+from msmfcode.models.cann import Grid, FMSMF, DMSMF, DiffSolverError, EmptyFields
 from msmfcode.execution.parallel import ParallelExecutor
 from msmfcode.evaluation.data import load_experimental_data, load_experimental_config, convert_experimental_config
 
@@ -13,7 +13,7 @@ warnings.filterwarnings("error")
 
 # Config
 experiment_type = ExperimentType.OPTIMIZATION
-network_type = MSMFMultiCAN
+network_type = FMSMF
 experiment_nums = [1]
 verification_metrics = {Metric.POS_ERROR_MEAN + '_mean': 0.3, Metric.AVG_NUM_FIELDS_PER_NEURON + '_mean': 0.1}
 perc_samples = None

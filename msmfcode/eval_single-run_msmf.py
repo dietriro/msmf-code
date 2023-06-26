@@ -1,7 +1,7 @@
 from msmfcode.core.logging import log
 from msmfcode.core.config import *
 from msmfcode.execution.parallel import ParallelExecutor, ParallelEvaluationExecutor
-from msmfcode.models.cann import MSMFSingleCAN, MSMFMultiCAN, MSMFGridCAN, SSSFCAN
+from msmfcode.models.cann import DMSMF, FMSMF, Grid, SSSF
 from msmfcode.evaluation.plot import plot_weight_distribution, plot_neuron_activity_fixed_attractors, \
     plot_neuron_activity_variable_attractors, plot_neuron_activity_static, save_plot
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ log.handlers[LogHandler.STREAM].setLevel(logging.INFO)
 log.handlers[LogHandler.FILE].setLevel(logging.DETAIL)
 experiment_id = 'single'
 
-pe = ParallelExecutor(experiment_id, MSMFSingleCAN)
+pe = ParallelExecutor(experiment_id, DMSMF)
 
 # for i_can in range(len(pe.cans)):
 #     pe.cans[i_can].p.prob_dead_neurons = 0.3

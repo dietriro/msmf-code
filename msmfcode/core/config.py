@@ -60,10 +60,10 @@ class ExperimentType:
 
 
 class NetworkType:
-    MSMF_SINGLE_CAN = 'MSMFSingleCAN'
-    MSMF_MULTI_CAN = 'MSMFMultiCAN'
-    MSMF_GRID_CAN = 'MSMFGridCAN'
-    SSSF_CAN = 'SSSFCAN'
+    MSMF_DYNAMIC = 'DMSMF'
+    MSMF_FIXED = 'FMSMF'
+    GRID = 'Grid'
+    SSSF = 'SSSF'
     GENERAL = 'general'
 
 
@@ -117,26 +117,26 @@ EXPERIMENT_FILE_NAME = {ExperimentType.EVALUATION: 'experiment',
 EXPERIMENT_SETUP_FILE_NAME = {ExperimentType.EVALUATION: 'experiments.csv',
                               ExperimentType.EVALUATION_SINGLE: 'experiments_single.csv',
                               ExperimentType.OPTIMIZATION: 'optimizations.csv'}
-EXPERIMENT_FOLDERS = {NetworkType.MSMF_SINGLE_CAN: join(PY_PKG_PATH, 'data/evaluation/msmf_single-cann'),
-                      NetworkType.MSMF_MULTI_CAN: join(PY_PKG_PATH, 'data/evaluation/msmf_multi-cann'),
-                      NetworkType.SSSF_CAN: join(PY_PKG_PATH, 'data/evaluation/sssf_cann'),
-                      NetworkType.MSMF_GRID_CAN: join(PY_PKG_PATH, 'data/evaluation/msmf_grid-cann'),
+EXPERIMENT_FOLDERS = {NetworkType.MSMF_DYNAMIC: join(PY_PKG_PATH, 'data/evaluation/msmf_dynamic'),
+                      NetworkType.MSMF_FIXED: join(PY_PKG_PATH, 'data/evaluation/msmf_fixed'),
+                      NetworkType.SSSF: join(PY_PKG_PATH, 'data/evaluation/sssf'),
+                      NetworkType.GRID: join(PY_PKG_PATH, 'data/evaluation/grid'),
                       NetworkType.GENERAL: join(PY_PKG_PATH, 'data/evaluation/general')}
 EXPERIMENT_SUBFOLDERS = {FileType.DATA: 'data', FileType.FIGURE: 'figures', FileType.MODEL: 'models',
                          FileType.OPTIMIZATION: 'optimizations'}
 PATH_CONFIG = join(PY_PKG_PATH, 'config')
-FILE_NAME_CONFIG_EVAL = {NetworkType.MSMF_SINGLE_CAN: 'config_eval_MSMFSingleCAN.yaml',
-                         NetworkType.MSMF_MULTI_CAN: 'config_eval_MSMFMultiCAN.yaml',
-                         NetworkType.SSSF_CAN: 'config_eval_SSSFCAN.yaml',
-                         NetworkType.MSMF_GRID_CAN: 'config_eval_MSMFGridCAN.yaml'}
-FILE_NAME_CONFIG_CGA = {NetworkType.MSMF_SINGLE_CAN: 'config_cga_MSMFSingleCAN.yaml',
-                        NetworkType.MSMF_MULTI_CAN: 'config_cga_MSMFMultiCAN.yaml',
-                        NetworkType.SSSF_CAN: 'config_cga_SSSFCAN.yaml',
-                        NetworkType.MSMF_GRID_CAN: 'config_cga_MSMFGridCAN.yaml'}
-FILE_NAME_DEFAULT_PARAMS_CAN = {NetworkType.MSMF_SINGLE_CAN: 'config_default_params_MSMFSingleCAN.yaml',
-                                NetworkType.MSMF_MULTI_CAN: 'config_default_params_MSMFMultiCAN.yaml',
-                                NetworkType.SSSF_CAN: 'config_default_params_SSSFCAN.yaml',
-                                NetworkType.MSMF_GRID_CAN: 'config_default_params_MSMFGridCAN.yaml'}
+FILE_NAME_CONFIG_EVAL = {NetworkType.MSMF_DYNAMIC: 'config_eval_DMSMF.yaml',
+                         NetworkType.MSMF_FIXED: 'config_eval_FMSMF.yaml',
+                         NetworkType.SSSF: 'config_eval_SSSF.yaml',
+                         NetworkType.GRID: 'config_eval_Grid.yaml'}
+FILE_NAME_CONFIG_CGA = {NetworkType.MSMF_DYNAMIC: 'config_cga_DMSMF.yaml',
+                        NetworkType.MSMF_FIXED: 'config_cga_FMSMF.yaml',
+                        NetworkType.SSSF: 'config_cga_SSSF.yaml',
+                        NetworkType.GRID: 'config_cga_Grid.yaml'}
+FILE_NAME_DEFAULT_PARAMS_CAN = {NetworkType.MSMF_DYNAMIC: 'config_default_params_DMSMF.yaml',
+                                NetworkType.MSMF_FIXED: 'config_default_params_FMSMF.yaml',
+                                NetworkType.SSSF: 'config_default_params_SSSF.yaml',
+                                NetworkType.GRID: 'config_default_params_Grid.yaml'}
 EXPERIMENTAL_DATA_DECIMALS = 3
 
 # Generate non-existing folders
