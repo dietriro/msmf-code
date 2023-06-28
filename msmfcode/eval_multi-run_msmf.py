@@ -1,6 +1,6 @@
 import logging
 
-import msmf_src
+import msmfcode_src
 from msmfcode.core.logging import log
 from msmfcode.core.config import *
 from msmfcode.execution.parallel import ParallelExecutor, ParallelEvaluationExecutor
